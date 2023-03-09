@@ -1,48 +1,38 @@
 import { useState } from "react";
 import "./App.css";
+import { User } from "./user.jsx";
 
 function App() {
+  const planets = [
+    { name: "Mars", isGasPlanet: false },
+    { name: "Earth", isGasPlanet: false },
+    { name: "Jupiter", isGasPlanet: true },
+    { name: "Venus", isGasPlanet: false },
+    { name: "Neptune", isGasPlanet: true },
+    { name: "Uranus", isGasPlanet: true },
+  ];
+
+  const names = ["Herm", "Shaniqua", "Rene", "Eero"];
+
+  const users = [
+    { name: "Rene", age: 25 },
+    { name: "Marcus", age: 75 },
+    { name: "Juhan", age: 43 },
+  ];
+
   return (
     <div className="App">
-      <User name="Rene" age={21} email="rene@rene.com" />
-      <User name="Pedro" age={27} email="Pedro@rene.com" />
-      <User name="Marcus" age={45} email="Marcus@rene.com" />
-      <Job salary={90000} position="Senior SDE" company="Amazon" />
-      <Job salary={90000} position="Senior SDE" company="Amazon" />
+      {planets.map((planet, key) => {
+        return planet.isGasPlanet && <h1>{planet.name}</h1>;
+      })}
+
+      {users.map((user, key) => {
+        return <User name={user.name} age={user.age} />;
+      })}
     </div>
   );
 }
 
-const props = {
-  name: "Rene",
-  age: 21,
-  email: "rene@rene.com",
-};
-
-const User = (props) => {
-  return (
-    <div>
-      <h1>{props.name}</h1>
-      <h2>{props.age}</h2>
-      <h3>{props.email}</h3>
-    </div>
-  );
-};
-
-const jobInfo = {
-  salary: 90000,
-  position: "Senior SDE",
-  company: "Amazon",
-};
-
-const Job = (jobInfo) => {
-  return (
-    <div>
-      <h1>{jobInfo.salary}</h1>
-      <h1>{jobInfo.position}</h1>
-      <h1>{jobInfo.company}</h1>
-    </div>
-  );
-};
+const PlanetsComponent = () => {};
 
 export default App;
